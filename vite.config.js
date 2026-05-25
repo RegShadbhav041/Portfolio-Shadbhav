@@ -8,7 +8,7 @@ import { defineConfig } from "vite";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  base: process.env.GITHUB_PAGES ? "/Portfolio-Shadbhav/" : "/",
+  base: "./",
   plugins: [react(), tailwindcss(), jsxLocPlugin()],
   resolve: {
     alias: {
@@ -20,7 +20,7 @@ export default defineConfig({
   envDir: __dirname,
   root: path.resolve(__dirname, "client"),
   build: {
-    outDir: path.resolve(__dirname, "dist/public"),
+    outDir: path.resolve(__dirname, "dist"),
     emptyOutDir: true,
   },
   server: {
