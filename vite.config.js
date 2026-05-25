@@ -18,12 +18,12 @@ export default defineConfig({
     },
   },
   envDir: __dirname,
-  root: path.resolve(__dirname, "shadbhav-portfolio"),
+  root: path.resolve(__dirname, "client"),
   build: {
     outDir: path.resolve(__dirname, "dist/public"),
     emptyOutDir: true,
     rollupOptions: {
-      input: path.resolve(__dirname, "index.html"),
+      input: path.resolve(__dirname, "client/index.html"),
     },
   },
   server: {
