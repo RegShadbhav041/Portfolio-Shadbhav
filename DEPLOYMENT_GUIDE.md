@@ -79,45 +79,49 @@ This guide provides step-by-step instructions for deploying your professional po
 
 ---
 
-### Option 3: GitHub Pages
+### Option 3: GitHub Pages (Recommended: GitHub Actions)
 
 **Prerequisites:**
 - GitHub account
 - Repository with portfolio code
 
-**Steps:**
+**Automated Setup (Recommended):**
 
-1. **Build Your Project**
+I have already configured a GitHub Action for you in `.github/workflows/deploy.yml`. This will automatically build and deploy your site whenever you push to the `main` branch.
+
+**Steps to Enable:**
+
+1. **Push your code to GitHub:**
    ```bash
-   pnpm build
+   git add .
+   git commit -m "Add GitHub Actions deployment"
+   git push origin main
    ```
 
-2. **Create `gh-pages` Branch**
-   ```bash
-   git checkout -b gh-pages
-   git add dist/
-   git commit -m "Deploy to GitHub Pages"
-   git push origin gh-pages
-   ```
+2. **Configure GitHub Pages Settings:**
+   - Go to your repository on GitHub.
+   - Click on **Settings** -> **Pages**.
+   - Under **Build and deployment** > **Source**, select **GitHub Actions**.
 
-3. **Enable GitHub Pages**
-   - Go to repository Settings
-   - Scroll to "Pages"
-   - Select `gh-pages` branch as source
-   - Save
+3. **Verify Deployment:**
+   - Go to the **Actions** tab in your repository.
+   - You should see a "Deploy to GitHub Pages" workflow running.
+   - Once it finishes, your site will be live!
 
-4. **Access Your Site**
-   - Your portfolio is live at: `https://yourusername.github.io/shadbhav-portfolio`
-
-**Advantages:**
-- ✅ Free hosting
-- ✅ No external dependencies
-- ✅ Works with custom domains
-- ✅ Integrated with GitHub
+**Important Note on Repository Name:**
+- The project is currently configured with a base path of `/shadbhav-portfolio/` in `vite.config.js`. 
+- If your GitHub repository has a **different name**, you must update the `base` property in `vite.config.js` to match your repository name:
+  ```javascript
+  // vite.config.js
+  export default defineConfig({
+    base: "/your-repo-name/",
+    // ...
+  })
+  ```
 
 ---
 
-### Option 4: Docker + Any Cloud Provider
+### Option 4: Manual GitHub Pages Deployment (Legacy)
 
 **For AWS, Google Cloud, Azure, or DigitalOcean**
 
