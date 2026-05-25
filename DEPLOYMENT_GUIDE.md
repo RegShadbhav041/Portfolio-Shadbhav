@@ -87,37 +87,39 @@ This guide provides step-by-step instructions for deploying your professional po
 
 **Automated Setup (Recommended):**
 
-I have already configured a GitHub Action for you in `.github/workflows/deploy.yml`. This will automatically build and deploy your site whenever you push to the `main` branch.
+I have configured a GitHub Action for you in `.github/workflows/deploy.yml`. This will automatically build and deploy your site whenever you push to the `main` branch.
 
 **Steps to Enable:**
 
 1. **Push your code to GitHub:**
    ```bash
    git add .
-   git commit -m "Add GitHub Actions deployment"
+   git commit -m "Fix Vite build and deployment configuration"
    git push origin main
    ```
 
-2. **Configure GitHub Pages Settings:**
+2. **Configure GitHub Pages Settings (CRITICAL):**
    - Go to your repository on GitHub.
-   - Click on **Settings** -> **Pages**.
-   - Under **Build and deployment** > **Source**, select **GitHub Actions**.
+   - Click on **Settings** (top tab).
+   - Click on **Pages** (left sidebar).
+   - Under **Build and deployment** > **Source**, you **MUST** select **GitHub Actions**.
+   - *If you leave it as "Deploy from a branch", it will show your README instead of your portfolio.*
 
 3. **Verify Deployment:**
    - Go to the **Actions** tab in your repository.
    - You should see a "Deploy to GitHub Pages" workflow running.
-   - Once it finishes, your site will be live!
+   - Once it finishes (green checkmark), your site will be live!
 
-**Important Note on Repository Name:**
-- The project is currently configured with a base path of `/shadbhav-portfolio/` in `vite.config.js`. 
-- If your GitHub repository has a **different name**, you must update the `base` property in `vite.config.js` to match your repository name:
+**Important Note on URL Paths:**
+- If your site is at `username.github.io/your-repo-name/`, and you see a blank page or 404s for assets, you may need to update `base` in `vite.config.js`:
   ```javascript
   // vite.config.js
   export default defineConfig({
-    base: "/your-repo-name/",
+    base: "/your-repo-name/", // Update this to match your repository name
     // ...
   })
   ```
+- If you are using a **custom domain** (e.g., `www.yourname.com`), the current `base: "/"` setting is perfect.
 
 ---
 
