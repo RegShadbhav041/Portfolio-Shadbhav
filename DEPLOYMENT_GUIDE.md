@@ -111,15 +111,16 @@ I have configured a GitHub Action for you in `.github/workflows/deploy.yml`. Thi
    - Once it finishes (green checkmark), your site will be live!
 
 **Important Note on URL Paths:**
-- If your site is at `username.github.io/your-repo-name/`, and you see a blank page or 404s for assets, you may need to update `base` in `vite.config.js`:
+- The project is now configured with `index.html` in the **root** folder.
+- The `base` is set to `/` in `vite.config.js`, which is ideal for custom domains or root-level GitHub Pages.
+- If your site is at `username.github.io/repo-name/`, you must update `base` in `vite.config.js`:
   ```javascript
   // vite.config.js
   export default defineConfig({
-    base: "/your-repo-name/", // Update this to match your repository name
+    base: "/repo-name/", 
     // ...
   })
   ```
-- If you are using a **custom domain** (e.g., `www.yourname.com`), the current `base: "/"` setting is perfect.
 
 ---
 
